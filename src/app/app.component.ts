@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import {Product} from './product.model'
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -15,6 +15,41 @@ export class AppComponent {
     age: 18,
     avatar: this.img
   }
+  color = "";
+  names: string[] = ["Daniel", "Julian", "Santiago"];
+  newName = "";
+  products: Product[] = [
+    {
+      name: 'EL mejor juguete',
+      price: 565,
+      image: '../assets/images/toy.jpg',
+    },
+    {
+      name: 'Bicicleta casi nueva',
+      price: 356,
+      image: '../assets/images/bike.webp'
+    },
+    {
+      name: 'Colleción de albumnes',
+      price: 34,
+      image: '../assets/images/album.webp'
+    },
+    {
+      name: 'Mis libros',
+      price: 23,
+      image: '../assets/images/books.jpg'
+    },
+    {
+      name: 'Casa para perro',
+      price: 34,
+      image: '../assets/images/house.jpg'
+    },
+    {
+      name: 'Gafas',
+      price: 3434,
+      image: '../assets/images/glasses.webp'
+    }
+  ];
   /*Encapsulamiento*/toggleButton(){
     this.btnDisabled =!this.btnDisabled;
   }
@@ -31,5 +66,14 @@ export class AppComponent {
   changeName(event: Event){
     const elemet = event.target as HTMLInputElement;
     this.person.name = elemet.value;
+  }
+  addName(){
+    this.names.push(this.newName)
+  }
+  deleteName(j: number){
+    this.names.splice(j-1, 1)
+    if(this.name.length === 0){
+      alert("No hay nombres en la lista.")
+    }
   }
 }
